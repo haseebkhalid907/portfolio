@@ -146,10 +146,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: var(--shadow-card);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.card:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+}
+@media (max-width: 640px) {
+  .card { border-radius: 14px; }
 }
 
 /* ── Stat card ── */
@@ -212,25 +217,30 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 4px 10px;
-  border-radius: 6px;
+  padding: 5px 12px;
+  border-radius: 8px;
   font-size: 12px;
   font-weight: 500;
   background: var(--bg-secondary);
   color: var(--text-secondary);
   border: 1px solid var(--border);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 .tag:hover {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
 }
+@media (max-width: 640px) {
+  .tag { padding: 4px 10px; font-size: 11px; }
+}
 
 /* ── CTA button ── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   border-radius: 12px;
@@ -252,6 +262,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   padding: 12px 24px;
   border-radius: 12px;
@@ -268,4 +279,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-soft);
+}
+
+@media (max-width: 640px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 11px 20px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
 }

@@ -14,8 +14,8 @@ export default function Projects() {
   const other = projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-28 lg:py-36">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
+    <section id="projects" className="py-20 sm:py-28 lg:py-36">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export default function Projects() {
           <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
             Portfolio
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
             Featured Projects
           </h2>
           <p className="text-[var(--text-secondary)] text-base">
@@ -36,7 +36,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Featured projects */}
-        <div className="space-y-6 mb-14">
+        <div className="space-y-5 sm:space-y-6 mb-10 sm:mb-14">
           {featured.map((project, i) => (
             <motion.div
               key={project.title}
@@ -45,14 +45,14 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: i * 0.12 }}
               className="group card overflow-hidden"
             >
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-6 md:p-8">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-5">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-mid)] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-md">
                       <FolderOpen size={22} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent)] transition-colors">
                         {project.title}
                       </h3>
                       <p className="text-sm text-[var(--text-secondary)] font-medium">
@@ -124,7 +124,7 @@ export default function Projects() {
                   {other.length}
                 </span>
               </h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                 {other.map((project, i) => (
                   <motion.div
                     key={project.title}

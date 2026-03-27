@@ -8,7 +8,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[var(--border)] py-10">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
             <a

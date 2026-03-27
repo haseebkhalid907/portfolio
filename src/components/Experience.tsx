@@ -10,10 +10,10 @@ export default function Experience() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="experience" className="py-28 lg:py-36 bg-[var(--bg-secondary)] relative">
+    <section id="experience" className="py-20 sm:py-28 lg:py-36 bg-[var(--bg-secondary)] relative">
       <div className="absolute inset-0 mesh-gradient pointer-events-none" />
 
-      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
+      <div className="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export default function Experience() {
           <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
             Career
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] leading-tight">
             Work Experience
           </h2>
         </motion.div>
@@ -44,7 +44,7 @@ export default function Experience() {
             <div className="absolute left-[-6px] top-2 w-[13px] h-[13px] rounded-full bg-[var(--accent)] ring-4 ring-[var(--bg-secondary)] shadow-[0_0_0_4px_var(--accent-soft)] hidden sm:block" />
 
             <div className="card overflow-hidden">
-              <div className="p-6 sm:p-8 lg:p-10">
+              <div className="p-5 sm:p-8 lg:p-10">
                 {/* Top row */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
                   <div className="flex items-center gap-4">

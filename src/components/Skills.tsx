@@ -28,11 +28,11 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="py-28 lg:py-36 bg-[var(--bg-secondary)] relative">
+    <section id="skills" className="py-20 sm:py-28 lg:py-36 bg-[var(--bg-secondary)] relative">
       {/* Subtle mesh */}
       <div className="absolute inset-0 mesh-gradient pointer-events-none" />
 
-      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
+      <div className="relative max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,7 +43,7 @@ export default function Skills() {
           <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
             Tech Stack
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
             Skills & Technologies
           </h2>
           <p className="text-[var(--text-secondary)] text-base leading-relaxed">
@@ -60,7 +60,7 @@ export default function Skills() {
         </motion.p>
 
         {/* Skills grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {skills.map((category, i) => {
             const meta = categoryMeta[category.category] || { icon: Terminal, gradient: "from-gray-500 to-gray-600" };
             const Icon = meta.icon;

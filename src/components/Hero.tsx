@@ -46,7 +46,7 @@ export default function Hero() {
   });
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[100dvh] flex items-center overflow-hidden">
       {/* Background mesh */}
       <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--hero-gradient)" }} />
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -54,8 +54,8 @@ export default function Hero() {
         <div className="absolute -bottom-[30%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[var(--gradient-end)] opacity-[0.025] blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 w-full">
-        <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-center py-32 lg:py-0">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12 w-full">
+        <div className="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center pt-24 pb-16 sm:py-32 lg:py-0">
           {/* Left content */}
           <div className="max-w-2xl">
             {/* Status badge */}
@@ -80,7 +80,7 @@ export default function Hero() {
             {/* Heading */}
             <motion.h1
               {...fadeUp(0.3)}
-              className="text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] font-extrabold tracking-tight leading-[1.08] mb-4"
+              className="text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold tracking-tight leading-[1.1] mb-4"
             >
               I build products
               <br />
@@ -105,7 +105,7 @@ export default function Hero() {
             </motion.p>
 
             {/* CTAs */}
-            <motion.div {...fadeUp(0.55)} className="flex flex-wrap items-center gap-3 mb-14">
+            <motion.div {...fadeUp(0.55)} className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 mb-10 sm:mb-14">
               <a href="#projects" className="btn-primary">
                 View My Work
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
@@ -123,11 +123,11 @@ export default function Hero() {
             </motion.div>
 
             {/* Social */}
-            <motion.div {...fadeUp(0.65)} className="flex items-center gap-5">
-              <span className="text-[11px] font-semibold text-[var(--text-tertiary)] uppercase tracking-[0.15em]">
+            <motion.div {...fadeUp(0.65)} className="flex items-center gap-4 sm:gap-5">
+              <span className="text-[11px] font-semibold text-[var(--text-tertiary)] uppercase tracking-[0.15em] hidden sm:block">
                 Connect
               </span>
-              <div className="h-px w-10 bg-[var(--border)]" />
+              <div className="h-px w-10 bg-[var(--border)] hidden sm:block" />
               <div className="flex items-center gap-1">
                 {[
                   { icon: Github, href: personalInfo.github, label: "GitHub" },

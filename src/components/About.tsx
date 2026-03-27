@@ -80,8 +80,8 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" className="py-28 lg:py-36 relative">
-      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
+    <section id="about" className="py-20 sm:py-28 lg:py-36 relative">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ export default function About() {
           <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
             About Me
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] mb-5 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[var(--text-primary)] mb-5 leading-tight">
             Engineering products that{" "}
             <span className="gradient-text">scale and deliver value</span>
           </h2>
@@ -104,20 +104,20 @@ export default function About() {
         </motion.div>
 
         {/* Stats row — premium cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-14 sm:mb-20">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-              className="stat-card p-6 text-center hover:shadow-md transition-all duration-300"
+              className="stat-card p-4 sm:p-6 text-center hover:shadow-md transition-all duration-300"
             >
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] mb-1">
+              <div className="text-xl sm:text-2xl mb-1.5 sm:mb-2">{stat.icon}</div>
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[var(--text-primary)] mb-1">
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-[11px] text-[var(--text-tertiary)] font-semibold uppercase tracking-wider">
+              <div className="text-[10px] sm:text-[11px] text-[var(--text-tertiary)] font-semibold uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>
@@ -125,7 +125,7 @@ export default function About() {
         </div>
 
         {/* Highlights grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
