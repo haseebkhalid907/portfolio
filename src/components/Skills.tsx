@@ -13,24 +13,14 @@ import {
   Terminal,
 } from "lucide-react";
 
-const categoryIcons: Record<string, React.ElementType> = {
-  Frontend: Palette,
-  Backend: Server,
-  "Databases & ORM": Database,
-  "Auth & Payments": ShieldCheck,
-  "Cloud & DevOps": Cloud,
-  "Monitoring & Analytics": BarChart3,
-  Languages: Terminal,
-};
-
-const categoryColors: Record<string, string> = {
-  Frontend: "from-violet-500/10 to-pink-500/10",
-  Backend: "from-emerald-500/10 to-teal-500/10",
-  "Databases & ORM": "from-blue-500/10 to-cyan-500/10",
-  "Auth & Payments": "from-amber-500/10 to-orange-500/10",
-  "Cloud & DevOps": "from-sky-500/10 to-indigo-500/10",
-  "Monitoring & Analytics": "from-rose-500/10 to-red-500/10",
-  Languages: "from-purple-500/10 to-fuchsia-500/10",
+const categoryMeta: Record<string, { icon: React.ElementType; gradient: string }> = {
+  Frontend: { icon: Palette, gradient: "from-violet-500 to-purple-500" },
+  Backend: { icon: Server, gradient: "from-emerald-500 to-green-500" },
+  "Databases & ORM": { icon: Database, gradient: "from-blue-500 to-cyan-500" },
+  "Auth & Payments": { icon: ShieldCheck, gradient: "from-amber-500 to-yellow-500" },
+  "Cloud & DevOps": { icon: Cloud, gradient: "from-sky-500 to-indigo-500" },
+  "Monitoring & Analytics": { icon: BarChart3, gradient: "from-rose-500 to-pink-500" },
+  Languages: { icon: Terminal, gradient: "from-fuchsia-500 to-purple-500" },
 };
 
 export default function Skills() {
@@ -38,81 +28,69 @@ export default function Skills() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      id="skills"
-      className="py-24 lg:py-32 bg-[var(--bg-secondary)] relative"
-    >
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-8" ref={ref}>
+    <section id="skills" className="py-28 lg:py-36 bg-[var(--bg-secondary)] relative">
+      {/* Subtle mesh */}
+      <div className="absolute inset-0 mesh-gradient pointer-events-none" />
+
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="mb-4"
+          className="mb-5 max-w-xl"
         >
-          <p className="text-xs font-semibold text-[var(--accent)] mb-3 uppercase tracking-[0.2em]">
+          <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
             Tech Stack
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)] mb-3">
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
             Skills & Technologies
           </h2>
-          <p className="text-[var(--text-secondary)] max-w-lg text-[15px] leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-base leading-relaxed">
             A comprehensive toolkit refined over 4+ years of building production applications.
           </p>
         </motion.div>
 
-        {/* Total skill count */}
-        <motion.div
+        <motion.p
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-10 flex items-center gap-3"
-        >
-          <span className="text-sm font-medium text-[var(--text-tertiary)]">
-            {skills.reduce((acc, c) => acc + c.items.length, 0)}+ technologies across {skills.length} categories
-          </span>
-        </motion.div>
+          className="mb-10 text-sm font-medium text-[var(--text-tertiary)]">
+          {skills.reduce((acc, c) => acc + c.items.length, 0)}+ technologies across {skills.length} categories
+        </motion.p>
 
         {/* Skills grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {skills.map((category, i) => {
-            const Icon = categoryIcons[category.category] || Terminal;
+            const meta = categoryMeta[category.category] || { icon: Terminal, gradient: "from-gray-500 to-gray-600" };
+            const Icon = meta.icon;
             return (
               <motion.div
                 key={category.category}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
-                className="group bg-[var(--bg-elevated)] rounded-2xl border border-[var(--border)] hover:border-[var(--border-strong)] glow-card transition-all duration-300 overflow-hidden"
+                className="group card overflow-hidden"
               >
-                {/* Gradient header strip */}
-                <div className={`h-1 w-full bg-gradient-to-r ${categoryColors[category.category] || "from-violet-500/10 to-pink-500/10"}`} />
-
-                <div className="p-5">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-9 h-9 rounded-lg bg-[var(--accent-soft)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Icon size={16} className="text-[var(--accent)]" />
+                <div className="p-6">
+                  <div className="flex items-center gap-3.5 mb-5">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${meta.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                      <Icon size={18} className="text-white" />
                     </div>
                     <div>
-                      <h3 className="text-sm font-semibold text-[var(--text-primary)]">
+                      <h3 className="text-sm font-bold text-[var(--text-primary)]">
                         {category.category}
                       </h3>
-                      <p className="text-[11px] text-[var(--text-tertiary)]">
+                      <p className="text-[11px] text-[var(--text-tertiary)] font-medium">
                         {category.items.length} technologies
                       </p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {category.items.map((skill, j) => (
-                      <motion.span
-                        key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.3, delay: 0.2 + i * 0.06 + j * 0.02 }}
-                        className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent)] hover:text-[var(--accent)] hover:bg-[var(--accent-muted)] transition-all duration-200 cursor-default"
-                      >
+                  <div className="flex flex-wrap gap-2">
+                    {category.items.map((skill) => (
+                      <span key={skill} className="tag">
                         {skill}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
                 </div>

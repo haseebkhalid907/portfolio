@@ -40,31 +40,29 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "glass-nav border-b border-[var(--border)]"
-            : "bg-transparent"
+          scrolled ? "glass-nav" : "bg-transparent"
         }`}
       >
-        <div className="max-w-[1100px] mx-auto px-6 sm:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12 h-[68px] flex items-center justify-between">
           {/* Logo */}
           <a
             href="#home"
-            className="text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+            className="text-xl font-bold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity"
           >
             haseeb<span className="text-[var(--accent)]">.</span>
           </a>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-0.5 bg-[var(--bg-secondary)] rounded-full p-1 border border-[var(--border)]">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.slice(1);
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-3.5 py-1.5 text-[13px] font-medium rounded-full transition-colors duration-200 ${
+                  className={`relative px-4 py-1.5 text-[13px] font-medium rounded-full transition-colors duration-200 ${
                     isActive
                       ? "text-[var(--accent)]"
                       : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
@@ -73,12 +71,8 @@ export default function Navbar() {
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full bg-[var(--accent-soft)]"
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 30,
-                      }}
+                      className="absolute inset-0 rounded-full bg-[var(--bg-card)] shadow-sm border border-[var(--border)]"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
                   <span className="relative z-10">{link.label}</span>
@@ -91,15 +85,12 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-all duration-200"
+              className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] border border-transparent hover:border-[var(--border)] transition-all duration-200"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
             </button>
-            <a
-              href="#contact"
-              className="hidden md:inline-flex px-4 py-1.5 text-[13px] font-medium rounded-full bg-[var(--accent)] text-white hover:bg-[var(--accent-hover)] transition-colors duration-200"
-            >
+            <a href="#contact" className="hidden md:inline-flex btn-primary !py-2 !px-5 !text-[13px] !rounded-full !shadow-none">
               Get in Touch
             </a>
             <button
@@ -120,22 +111,23 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[var(--bg-primary)] md:hidden"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-[var(--bg-primary)] md:hidden flex flex-col"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-2">
+            <div className="h-[68px]" />
+            <div className="flex flex-col items-center justify-center flex-1 gap-3 px-8">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06 }}
-                  className={`px-6 py-3 text-xl font-medium rounded-xl transition-colors ${
+                  className={`w-full text-center px-6 py-4 text-lg font-semibold rounded-2xl transition-colors ${
                     activeSection === link.href.slice(1)
-                      ? "text-[var(--accent)]"
-                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
+                      ? "text-[var(--accent)] bg-[var(--accent-soft)]"
+                      : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]"
                   }`}
                 >
                   {link.label}
@@ -144,10 +136,10 @@ export default function Navbar() {
               <motion.a
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="mt-6 px-8 py-3 text-sm font-medium rounded-full bg-[var(--accent)] text-white"
+                className="mt-4 w-full text-center btn-primary !justify-center"
               >
                 Get in Touch
               </motion.a>

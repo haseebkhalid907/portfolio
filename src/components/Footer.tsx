@@ -8,17 +8,17 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-[var(--border)] py-10">
-      <div className="max-w-[1100px] mx-auto px-6 sm:px-8">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
             <a
               href="#home"
-              className="text-lg font-semibold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
+              className="text-lg font-bold tracking-tight text-[var(--text-primary)] hover:opacity-70 transition-opacity"
             >
               haseeb<span className="text-[var(--accent)]">.</span>
             </a>
-            <span className="hidden sm:block text-[var(--border-strong)]">|</span>
-            <p className="text-sm text-[var(--text-tertiary)] flex items-center gap-1">
+            <span className="hidden sm:block w-px h-4 bg-[var(--border)]" />
+            <p className="text-sm text-[var(--text-tertiary)] font-medium flex items-center gap-1.5">
               &copy; {currentYear} {personalInfo.name}. Built with
               <Heart size={12} className="text-[var(--accent)] inline" />
               using Next.js
@@ -44,7 +44,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="p-2.5 rounded-full text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[var(--accent-muted)] transition-all duration-200"
+                className="w-9 h-9 rounded-xl flex items-center justify-center text-[var(--text-tertiary)] hover:text-[var(--accent)] hover:bg-[var(--accent-soft)] transition-all duration-200"
               >
                 <Icon size={16} />
               </a>

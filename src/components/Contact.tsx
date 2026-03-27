@@ -11,7 +11,6 @@ import {
   Github,
   ArrowUpRight,
   CheckCircle,
-  Sparkles,
 } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 
@@ -33,14 +32,20 @@ export default function Contact() {
     setTimeout(() => setSent(false), 3000);
   };
 
+  const contactGradients = [
+    "from-indigo-500 to-blue-500",
+    "from-emerald-500 to-green-500",
+    "from-amber-500 to-orange-500",
+  ];
+
   return (
-    <section id="contact" className="py-24 lg:py-32 relative">
+    <section id="contact" className="py-28 lg:py-36 relative">
       {/* Background accent */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-[var(--accent)] opacity-[0.03] blur-[120px]" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full bg-[var(--accent)] opacity-[0.04] blur-[140px]" />
       </div>
 
-      <div className="relative max-w-[1100px] mx-auto px-6 sm:px-8" ref={ref}>
+      <div className="relative max-w-[1200px] mx-auto px-6 sm:px-8 lg:px-12" ref={ref}>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,13 +53,10 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="mb-14 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--accent-soft)] border border-[var(--accent)]/20 mb-5">
-            <Sparkles size={13} className="text-[var(--accent)]" />
-            <span className="text-xs font-medium text-[var(--accent)]">
-              Let&apos;s Connect
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text-primary)] mb-3">
+          <p className="text-[11px] font-bold text-[var(--accent)] mb-4 uppercase tracking-[0.25em]">
+            Get In Touch
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-[var(--text-primary)] mb-3 leading-tight">
             Have a project in mind?
           </h2>
           <p className="text-[var(--text-secondary)] text-base max-w-md mx-auto">
@@ -68,7 +70,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-2 space-y-5"
+            className="lg:col-span-2 space-y-4"
           >
             {[
               {
@@ -94,24 +96,24 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -15 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-                className="flex items-start gap-4 p-4 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] hover:border-[var(--border-strong)] transition-colors duration-200"
+                className="group card flex items-start gap-4 p-5"
               >
-                <div className="w-10 h-10 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center shrink-0">
-                  <item.icon size={16} className="text-[var(--accent)]" />
+                <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${contactGradients[i]} flex items-center justify-center shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon size={18} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-xs text-[var(--text-tertiary)] font-semibold uppercase tracking-wider mb-0.5">
+                  <p className="text-[11px] text-[var(--text-tertiary)] font-bold uppercase tracking-[0.12em] mb-1">
                     {item.label}
                   </p>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-sm text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors font-medium"
+                      className="text-sm text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors font-semibold"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="text-sm text-[var(--text-primary)] font-medium">
+                    <p className="text-sm text-[var(--text-primary)] font-semibold">
                       {item.value}
                     </p>
                   )}
@@ -124,7 +126,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -15 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="flex gap-2 pt-2"
+              className="flex gap-3 pt-2"
             >
               {[
                 {
@@ -143,9 +145,9 @@ export default function Contact() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-[var(--text-secondary)] border border-[var(--border)] bg-[var(--bg-elevated)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all duration-200"
+                  className="btn-secondary !rounded-xl flex-1 justify-center"
                 >
-                  <Icon size={15} />
+                  <Icon size={16} />
                   {label}
                   <ArrowUpRight size={12} />
                 </a>
@@ -162,11 +164,11 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 sm:p-8 space-y-5 glow-card transition-all duration-300"
+              className="card p-6 sm:p-8 space-y-5"
             >
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs text-[var(--text-tertiary)] font-semibold uppercase tracking-wider mb-2">
+                  <label className="block text-[11px] text-[var(--text-tertiary)] font-bold uppercase tracking-[0.12em] mb-2.5">
                     Name
                   </label>
                   <input
@@ -177,11 +179,11 @@ export default function Contact() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     placeholder="Your name"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm font-medium placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-[var(--text-tertiary)] font-semibold uppercase tracking-wider mb-2">
+                  <label className="block text-[11px] text-[var(--text-tertiary)] font-bold uppercase tracking-[0.12em] mb-2.5">
                     Email
                   </label>
                   <input
@@ -192,12 +194,12 @@ export default function Contact() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     placeholder="your@email.com"
-                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all"
+                    className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm font-medium placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-xs text-[var(--text-tertiary)] font-semibold uppercase tracking-wider mb-2">
+                <label className="block text-[11px] text-[var(--text-tertiary)] font-bold uppercase tracking-[0.12em] mb-2.5">
                   Message
                 </label>
                 <textarea
@@ -208,21 +210,21 @@ export default function Contact() {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] text-sm font-medium placeholder:text-[var(--text-tertiary)] focus:outline-none focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--ring)] transition-all resize-none"
                 />
               </div>
               <button
                 type="submit"
-                className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white text-sm font-semibold hover:bg-[var(--accent-hover)] shadow-lg shadow-[var(--accent)]/20 hover:shadow-xl hover:shadow-[var(--accent)]/30 transition-all duration-300"
+                className="btn-primary"
               >
                 {sent ? (
                   <>
-                    <CheckCircle size={15} />
+                    <CheckCircle size={16} />
                     Message Sent!
                   </>
                 ) : (
                   <>
-                    <Send size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    <Send size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     Send Message
                   </>
                 )}
